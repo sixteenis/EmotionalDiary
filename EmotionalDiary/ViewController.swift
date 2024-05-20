@@ -76,6 +76,7 @@ class ViewController: UIViewController {
         title.textColor = .black
         title.textAlignment = .center
         title.text = "\(slime[index]) \(slimeCount[index])"
+        title.tag = 1
     }
     func changtitle(_ title: UILabel,num: Int) {
         title.text = "\(slime[num]) \(slimeCount[num])"
@@ -133,49 +134,9 @@ class ViewController: UIViewController {
     }
 
 
-    @IBAction func button1Tappend(_ sender: UIButton) {
-        buttonTappendChangCount(index: 1)
+    @IBAction func buttonTappend(_ sender: UIButton) {
     }
     
-    @IBAction func button2Tappend(_ sender: UIButton) {
-        buttonTappendChangCount(index: 2)
-    }
-    
-    
-    @IBAction func button3Tappend(_ sender: UIButton) {
-        buttonTappendChangCount(index: 3)
-    }
-    
-    
-    @IBAction func button4Tappend(_ sender: UIButton) {
-        buttonTappendChangCount(index: 4)
-    }
-    
-    
-    @IBAction func button5Tappend(_ sender: UIButton) {
-        buttonTappendChangCount(index: 5)
-    }
-    
-    
-    
-    @IBAction func button6Tappend(_ sender: UIButton) {
-        buttonTappendChangCount(index: 6)
-    }
-    
-    
-    @IBAction func button7Tappend(_ sender: UIButton) {
-        buttonTappendChangCount(index: 7)
-    }
-    
-    
-    @IBAction func button8Tappend(_ sender: UIButton) {
-        buttonTappendChangCount(index: 8)
-    }
-    
-    
-    @IBAction func button9Tappend(_ sender: UIButton) {
-        buttonTappendChangCount(index: 9)
-    }
     
     
     @IBAction func resetButtonTappend(_ sender: UIButton) {
