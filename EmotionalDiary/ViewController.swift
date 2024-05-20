@@ -7,16 +7,11 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    
     @IBOutlet var maintitle: UILabel!
-    @IBOutlet var button1: UIButton!
-    @IBOutlet var button2: UIButton!
-    @IBOutlet var button3: UIButton!
-    @IBOutlet var button4: UIButton!
-    @IBOutlet var button5: UIButton!
-    @IBOutlet var button6: UIButton!
-    @IBOutlet var button7: UIButton!
-    @IBOutlet var button8: UIButton!
-    @IBOutlet var button9: UIButton!
+
+    @IBOutlet var buttonList: [UIButton]!
     
     @IBOutlet var labelList: [UILabel]!
     
@@ -38,33 +33,14 @@ class ViewController: UIViewController {
         maintitle.text = "당신의 현재 감정을 눌러보세요!!!"
         maintitle.textAlignment = .center
         
-        button1.setImage(UIImage(named: "slime1"), for: .normal)
-        button1.tag = 0
-        button2.setImage(UIImage(named: "slime2"), for: .normal)
-        button2.tag = 1
-        button3.setImage(UIImage(named: "slime3"), for: .normal)
-        button3.tag = 2
-        button4.setImage(UIImage(named: "slime4"), for: .normal)
-        button4.tag = 3
-        button5.setImage(UIImage(named: "slime5"), for: .normal)
-        button5.tag = 4
-        button6.setImage(UIImage(named: "slime6"), for: .normal)
-        button6.tag = 5
-        button7.setImage(UIImage(named: "slime7"), for: .normal)
-        button7.tag = 6
-        button8.setImage(UIImage(named: "slime8"), for: .normal)
-        button8.tag = 7
-        button9.setImage(UIImage(named: "slime9"), for: .normal)
-        button9.tag = 8
         for i in 0...8{
             titleSet(labelList[i], i)
+            buttonList[i].setImage(UIImage(named: "slime\(i+1)"), for: .normal)
+            buttonList[i].tag = i
         }
         
-        
-        
-        
-        
     }
+    // MARK: - 타이틀 설정 기능
     func titleSet(_ title: UILabel, _ index: Int) {
         title.numberOfLines = 1
         title.textColor = .black
@@ -72,19 +48,17 @@ class ViewController: UIViewController {
         title.text = "\(slime[index]) \(slimeCount[index])"
     }
     
+    // MARK: - 리셋 기능
     func reset() {
-        for i in 0...8 {
-            slimeCount[i] = 0
-        }
         for i in 0...8{
+            slimeCount[i] = 0
             titleSet(labelList[i], i)
         }
-        
-        
     }
 
 
     @IBAction func buttonTappend(_ sender: UIButton) {
+        print(sender.tag)
         slimeCount[sender.tag] += 1
         labelList[sender.tag].text = "\(slime[sender.tag]) \(slimeCount[sender.tag])"
         maintitle.text = "당신의 현재 감정 \(slime[sender.tag]) 1 증가!"
