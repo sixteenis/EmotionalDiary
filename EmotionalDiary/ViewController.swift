@@ -18,21 +18,12 @@ class ViewController: UIViewController {
     @IBOutlet var button8: UIButton!
     @IBOutlet var button9: UIButton!
     
-    @IBOutlet var label1: UILabel!
-    @IBOutlet var label2: UILabel!
-    @IBOutlet var label3: UILabel!
-    @IBOutlet var label4: UILabel!
-    @IBOutlet var label5: UILabel!
-    @IBOutlet var label6: UILabel!
-    @IBOutlet var label7: UILabel!
-    @IBOutlet var label8: UILabel!
-    @IBOutlet var label9: UILabel!
-    
+    @IBOutlet var labelList: [UILabel]!
     
     @IBOutlet var resetButton: UIButton!
     
-    var slime: [String] = ["","행복해","사랑해","좋아해", "당황해", "속상해", "우울해", "심심해", "찝찝해", "울찝해"]
-    var slimeCount: [Int] = Array(repeating: 0, count: 10)
+    var slime: [String] = ["행복해","사랑해","좋아해", "당황해", "속상해", "우울해", "심심해", "찝찝해", "울찝해"]
+    var slimeCount: [Int] = Array(repeating: 0, count: 9)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,24 +39,27 @@ class ViewController: UIViewController {
         maintitle.textAlignment = .center
         
         button1.setImage(UIImage(named: "slime1"), for: .normal)
+        button1.tag = 0
         button2.setImage(UIImage(named: "slime2"), for: .normal)
+        button2.tag = 1
         button3.setImage(UIImage(named: "slime3"), for: .normal)
+        button3.tag = 2
         button4.setImage(UIImage(named: "slime4"), for: .normal)
+        button4.tag = 3
         button5.setImage(UIImage(named: "slime5"), for: .normal)
+        button5.tag = 4
         button6.setImage(UIImage(named: "slime6"), for: .normal)
+        button6.tag = 5
         button7.setImage(UIImage(named: "slime7"), for: .normal)
+        button7.tag = 6
         button8.setImage(UIImage(named: "slime8"), for: .normal)
+        button8.tag = 7
         button9.setImage(UIImage(named: "slime9"), for: .normal)
+        button9.tag = 8
+        for i in 0...8{
+            titleSet(labelList[i], i)
+        }
         
-        titleSet(label1, 1)
-        titleSet(label2, 2)
-        titleSet(label3, 3)
-        titleSet(label4, 4)
-        titleSet(label5, 5)
-        titleSet(label6, 6)
-        titleSet(label7, 7)
-        titleSet(label8, 8)
-        titleSet(label9, 9)
         
         
         
@@ -76,65 +70,25 @@ class ViewController: UIViewController {
         title.textColor = .black
         title.textAlignment = .center
         title.text = "\(slime[index]) \(slimeCount[index])"
-        title.tag = 1
-    }
-    func changtitle(_ title: UILabel,num: Int) {
-        title.text = "\(slime[num]) \(slimeCount[num])"
-        maintitle.text = "당신의 현재 감정 \(slime[num]) 1 증가!"
-    }
-    func buttonTappendChangCount(index: Int) {
-        switch index{
-        case 1:
-            slimeCount[1] += 1
-            changtitle(label1, num: 1)
-        case 2:
-            slimeCount[2] += 1
-            changtitle(label2, num: 2)
-        case 3:
-            slimeCount[3] += 1
-            changtitle(label3, num: 3)
-        case 4:
-            slimeCount[4] += 1
-            changtitle(label4, num: 4)
-        case 5:
-            slimeCount[5] += 1
-            changtitle(label5, num: 5)
-        case 6:
-            slimeCount[6] += 1
-            changtitle(label6, num: 6)
-        case 7:
-            slimeCount[7] += 1
-            changtitle(label7, num: 7)
-        case 8:
-            slimeCount[8] += 1
-            changtitle(label8, num: 8)
-        case 9:
-            slimeCount[9] += 1
-            changtitle(label9, num: 9)
-        default:
-            break
-        }
-        
     }
     
     func reset() {
-        for i in 1...9 {
+        for i in 0...8 {
             slimeCount[i] = 0
         }
-        titleSet(label1, 1)
-        titleSet(label2, 2)
-        titleSet(label3, 3)
-        titleSet(label4, 4)
-        titleSet(label5, 5)
-        titleSet(label6, 6)
-        titleSet(label7, 7)
-        titleSet(label8, 8)
-        titleSet(label9, 9)
+        for i in 0...8{
+            titleSet(labelList[i], i)
+        }
+        
         
     }
 
 
     @IBAction func buttonTappend(_ sender: UIButton) {
+        slimeCount[sender.tag] += 1
+        labelList[sender.tag].text = "\(slime[sender.tag]) \(slimeCount[sender.tag])"
+        maintitle.text = "당신의 현재 감정 \(slime[sender.tag]) 1 증가!"
+        
     }
     
     
@@ -143,17 +97,5 @@ class ViewController: UIViewController {
         maintitle.text = "초기화 완료!"
         reset()
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
 }

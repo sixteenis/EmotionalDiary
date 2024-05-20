@@ -325,17 +325,17 @@
                         <outlet property="button7" destination="rvt-uc-67C" id="hDR-Cx-ocX"/>
                         <outlet property="button8" destination="KyK-dH-EUM" id="NY4-dX-uCJ"/>
                         <outlet property="button9" destination="8AO-XX-UJG" id="ldx-Eb-Wiz"/>
-                        <outlet property="label1" destination="2QO-yC-BnN" id="hKM-Mn-Cex"/>
-                        <outlet property="label2" destination="wRc-nq-dBS" id="3p3-ML-Uh5"/>
-                        <outlet property="label3" destination="In2-RK-M1L" id="JFl-Ru-yzv"/>
-                        <outlet property="label4" destination="kM9-3r-cem" id="aPe-Pt-2rf"/>
-                        <outlet property="label5" destination="CfT-0x-taQ" id="66j-1B-uMG"/>
-                        <outlet property="label6" destination="Vn3-hL-cvB" id="p2c-br-Qso"/>
-                        <outlet property="label7" destination="YDu-9N-Mcf" id="a7q-d8-9Kx"/>
-                        <outlet property="label8" destination="QKX-hp-hco" id="ZMf-Ke-TTs"/>
-                        <outlet property="label9" destination="KDw-n6-WAo" id="35J-lG-jUM"/>
                         <outlet property="maintitle" destination="Y6c-6x-9Hr" id="ytQ-jx-ArT"/>
                         <outlet property="resetButton" destination="gvO-Pq-d6d" id="MFc-RE-iM6"/>
+                        <outletCollection property="labelList" destination="2QO-yC-BnN" collectionClass="NSMutableArray" id="czJ-vM-jUn"/>
+                        <outletCollection property="labelList" destination="wRc-nq-dBS" collectionClass="NSMutableArray" id="e0D-MZ-43x"/>
+                        <outletCollection property="labelList" destination="In2-RK-M1L" collectionClass="NSMutableArray" id="Hlz-WK-McZ"/>
+                        <outletCollection property="labelList" destination="kM9-3r-cem" collectionClass="NSMutableArray" id="NGp-iD-YPB"/>
+                        <outletCollection property="labelList" destination="CfT-0x-taQ" collectionClass="NSMutableArray" id="xI7-LK-Wvf"/>
+                        <outletCollection property="labelList" destination="Vn3-hL-cvB" collectionClass="NSMutableArray" id="t0F-1P-Z0f"/>
+                        <outletCollection property="labelList" destination="YDu-9N-Mcf" collectionClass="NSMutableArray" id="Z2e-oJ-JWh"/>
+                        <outletCollection property="labelList" destination="QKX-hp-hco" collectionClass="NSMutableArray" id="ocX-0P-ZnJ"/>
+                        <outletCollection property="labelList" destination="KDw-n6-WAo" collectionClass="NSMutableArray" id="5dx-UF-g12"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
