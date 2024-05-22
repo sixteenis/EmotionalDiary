@@ -19,10 +19,16 @@ class ViewController: UIViewController {
     
     var slime: [String] = ["행복해","사랑해","좋아해", "당황해", "속상해", "우울해", "심심해", "찝찝해", "울찝해"]
     var slimeCount: [Int] = Array(repeating: 0, count: 9)
+    //var slimeCounts: [Int]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setView()
+        savedData()
+//        for i in 0..<9{
+//            slimeCount[i] = UserDefaults.standard.integer(forKey: "cnt\(i)")
+//            print(slimeCount[i])
+//        }
     }
     func setView() {
         resetButton.setTitle("감정 기록 초기화", for: .normal)
@@ -39,29 +45,45 @@ class ViewController: UIViewController {
             buttonList[i].tag = i
         }
         
+        
     }
     // MARK: - 타이틀 설정 기능
     func titleSet(_ title: UILabel, _ index: Int) {
         title.numberOfLines = 1
         title.textColor = .black
         title.textAlignment = .center
-        title.text = "\(slime[index]) \(slimeCount[index])"
+        title.text = "\(slime[index]) \(UserDefaults.standard.integer(forKey: "cnt\(index)"))"
     }
-    
     // MARK: - 리셋 기능
     func reset() {
         for i in 0...8{
-            slimeCount[i] = 0
+//            slimeCount[i] = 0
+//            titleSet(labelList[i], i)
+            UserDefaults.standard.set(0, forKey: "cnt\(i)")
             titleSet(labelList[i], i)
+        }
+    }
+    // MARK: - 이전 기록 불러오기
+    func savedData() {
+        for i in 0..<9 {
+            if UserDefaults.standard.integer(forKey: "cnt\(i)") == 0 {
+                UserDefaults.standard.set(0, forKey: "cnt\(i)")
+            }
         }
     }
 
 
     @IBAction func buttonTappend(_ sender: UIButton) {
-        print(sender.tag)
-        slimeCount[sender.tag] += 1
-        labelList[sender.tag].text = "\(slime[sender.tag]) \(slimeCount[sender.tag])"
+        
+        let index = sender.tag
+        let cnt = UserDefaults.standard.integer(forKey: "cnt\(index)") + 1
+        UserDefaults.standard.set(cnt, forKey: "cnt\(index)")
+        labelList[sender.tag].text = "\(slime[sender.tag]) \(cnt)"
         maintitle.text = "당신의 현재 감정 \(slime[sender.tag]) 1 증가!"
+//        labelList[sender.tag].text = "\(slime[sender.tag]) \(slimeCount[sender.tag])"
+//        maintitle.text = "당신의 현재 감정 \(slime[sender.tag]) 1 증가!"
+        
+        print(cnt)
         
     }
     
